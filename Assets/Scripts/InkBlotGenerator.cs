@@ -13,34 +13,38 @@ public class InkBlotGenerator : MonoBehaviour
     private float initialScale = 2.0f;
     private float scaleIncreaseAmount = 2.0f;
 
-    private int currentWaypointIndex = 0;
+    private int currentWaypointIndex = 1;
     private float nextSpawnTime = 0f;
+
     private GameObject lastInkblot;
 
     void Start()
     {
         nextSpawnTime = Time.time + Random.Range(minInterval, maxInterval);
 
-        lastInkblot = Instantiate(inkblotPrefab, pathWaypoints[0].position, Quaternion.Euler(90f, 0f, 0f));
-        lastInkblot.transform.localScale = new Vector3(initialScale, initialScale, initialScale);
+        InitialScale();
     }
 
     void Update()
     {
+        
         if (Time.time >= nextSpawnTime && currentWaypointIndex < pathWaypoints.Length)
         {
-            if (lastInkblot != null)
-            {
-                float newScale = lastInkblot.transform.localScale.x + scaleIncreaseAmount;
-                lastInkblot.transform.localScale = new Vector3(newScale, newScale, newScale);
-            }
-
             GameObject newInkblot = Instantiate(inkblotPrefab, pathWaypoints[currentWaypointIndex].position, Quaternion.Euler(90f, 0f, 0f));
+
+            float newScale = lastInkblot.transform.localScale.x + scaleIncreaseAmount;
+            newInkblot.transform.localScale = new Vector3(newScale, newScale, newScale);
             lastInkblot = newInkblot;
 
             currentWaypointIndex++;
 
             nextSpawnTime = Time.time + Random.Range(minInterval, maxInterval);
         }
+    }
+
+    public void InitialScale()
+    {
+        lastInkblot = Instantiate(inkblotPrefab, pathWaypoints[0].position, Quaternion.Euler(90f, 0f, 0f));
+        lastInkblot.transform.localScale = new Vector3(initialScale, initialScale, initialScale);
     }
 }
