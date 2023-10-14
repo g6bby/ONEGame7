@@ -6,7 +6,7 @@ public class InkBlotGenerator : MonoBehaviour
 {
     public GameObject inkblotPrefab;
     public Transform[] pathWaypoints;
-    public GameObject particleSystemPrefab; // Assign your particle system prefab in the Inspector
+    public GameObject particleSystemPrefab;
 
     public float minInterval = 1.0f;
     public float maxInterval = 5.0f;
