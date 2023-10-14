@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class BlackScene : MonoBehaviour
 {
+    public GameObject particleSystemPrefab;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene("BlackScene");
+            //particleSystemPrefab.SetActive(false);
         }
     }
 }

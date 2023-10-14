@@ -6,8 +6,9 @@ public class InkBlotGenerator : MonoBehaviour
 {
     public GameObject inkblotPrefab;
     public Transform[] pathWaypoints;
+    public GameObject particleSystemPrefab; // Assign your particle system prefab in the Inspector
 
-    public float minInterval = 1.0f; 
+    public float minInterval = 1.0f;
     public float maxInterval = 5.0f;
 
     private float initialScale = 2.0f;
@@ -27,7 +28,6 @@ public class InkBlotGenerator : MonoBehaviour
 
     void Update()
     {
-        
         if (Time.time >= nextSpawnTime && currentWaypointIndex < pathWaypoints.Length)
         {
             GameObject newInkblot = Instantiate(inkblotPrefab, pathWaypoints[currentWaypointIndex].position, Quaternion.Euler(90f, 0f, 0f));
@@ -35,6 +35,11 @@ public class InkBlotGenerator : MonoBehaviour
             float newScale = lastInkblot.transform.localScale.x + scaleIncreaseAmount;
             newInkblot.transform.localScale = new Vector3(newScale, newScale, newScale);
             lastInkblot = newInkblot;
+
+            if (currentWaypointIndex == 7)
+            {
+                particleSystemPrefab.SetActive(true);
+            }
 
             currentWaypointIndex++;
 
