@@ -9,6 +9,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    private AudioListener audioListener;
+
+    void Start()
+    {
+        audioListener = Camera.main.GetComponent<AudioListener>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,6 +38,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+        AudioListener.pause = false;
     }
 
     void Pause()
@@ -38,6 +47,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        AudioListener.pause = true;
     }
 
     public void RestartTheGame()
