@@ -5554,7 +5554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2396ef569011f4d98048d385935632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystemPrefab: {fileID: 0}
+  sceneToLoad: BlackScene
 --- !u!1001 &1211129938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7845,7 +7845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 624495675}
-  audioListener: {fileID: 963194226}
 --- !u!1 &1956001401
 GameObject:
   m_ObjectHideFlags: 0
